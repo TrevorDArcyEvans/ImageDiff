@@ -54,18 +54,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ImageDiff\ImageDiff.csproj">
-      <Project>{8c9c4abc-4d3a-4dcd-aee1-95e07e4fae9f}</Project>
-      <Name>ImageDiff</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="images\TestImage1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="images\TestImage2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImageDiff\ImageDiff.csproj">
+      <Project>{8c9c4abc-4d3a-4dcd-aee1-95e07e4fae9f}</Project>
+      <Name>ImageDiff</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

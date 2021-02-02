@@ -9,6 +9,7 @@ namespace ImageDiff
         public double JustNoticeableDifference { get; set; }
         public int DetectionPadding { get; set; }
         public int BoundingBoxPadding { get; set; }
+        public int BoundingBoxThickness { get; set; }
         public Color BoundingBoxColor { get; set; }
         public BoundingBoxModes BoundingBoxMode { get; set; }
 
@@ -21,6 +22,7 @@ namespace ImageDiff
             BoundingBoxColor = Color.Red;
             BoundingBoxMode = BoundingBoxModes.Single;
             AnalyzerType = AnalyzerTypes.ExactMatch;
+            BoundingBoxThickness = 1;
         }
     }
 }

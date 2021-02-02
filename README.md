@@ -44,14 +44,14 @@ The compare object can be configured to use different settings for the different
 
     var options = new CompareOptions 
     {
-		AnalyzerType = AnalyzerTypes.CIE76,
+	AnalyzerType = AnalyzerTypes.CIE76,
         JustNoticableDifference = 2.3,
         DetectionPadding = 2,
         Labeler = LabelerTypes.ConnectedComponentLabeling,
         BoundingBoxColor = Color.Red,
         BoundingBoxPadding = 2,
         BoundingBoxMode = BoundingBoxModes.Multiple,
-	BoundingBoxThickness = 1 
+        BoundingBoxThickness = 1 
     };
     var comparer = new BitmapComparer(options);
 

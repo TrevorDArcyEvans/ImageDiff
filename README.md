@@ -25,7 +25,8 @@ Default usage:
     var secondImage = new Bitmap("path/to/second/image);
 
     var comparer = new BitmapComparer();
-    var diff = comparer.Compare(firstImage, secondImage);
+    var diff = comparer.Compare(firstImage, secondImage); //Returns a result with the differences + the Bitmap
+    var generate = comparer.Generate(firstImage, secondImage);// Generates the bitmap image and returns a Bitmap
 
 When initialized without options, the following values are used:
 
@@ -36,6 +37,7 @@ When initialized without options, the following values are used:
 - BoundingBoxPadding: 2
 - BoundingBoxColor: Red
 - BoundingBoxMode: Single
+- BoundingBoxThickness: 1
 
 
 The compare object can be configured to use different settings for the different stages of processing.
@@ -48,7 +50,8 @@ The compare object can be configured to use different settings for the different
         Labeler = LabelerTypes.ConnectedComponentLabeling,
         BoundingBoxColor = Color.Red,
         BoundingBoxPadding = 2,
-        BoundingBoxMode = BoundingBoxModes.Multiple
+        BoundingBoxMode = BoundingBoxModes.Multiple,
+	BoundingBoxThickness = 1 
     };
     var comparer = new BitmapComparer(options);
 
@@ -75,6 +78,10 @@ The color of the bounding box to be drawn when highlighting detected differences
 
 #### Bounding Box Padding
 The number of pixels of padding to include around the detected difference when drawing a bounding box.
+
+#### Bounding Box Thickness
+The thickness of the rectangle showing the difference in pixel. Default = 1
+
 
 #### Bounding Box Mode
 Specifies how to build the bounding boxes when highlighting the detected differences.

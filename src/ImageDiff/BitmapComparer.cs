@@ -15,6 +15,7 @@ namespace ImageDiff
         private int DetectionPadding { get; set; }
         private int BoundingBoxPadding { get; set; }
         private Color BoundingBoxColor { get; set; }
+        private int BoundingBoxThickness { get; set; }
         private BoundingBoxModes BoundingBoxMode { get; set; }
         private AnalyzerTypes AnalyzerType { get; set; }
 
@@ -47,20 +48,30 @@ namespace ImageDiff
             BoundingBoxPadding = options.BoundingBoxPadding;
             BoundingBoxMode = options.BoundingBoxMode;
             AnalyzerType = options.AnalyzerType;
+            BoundingBoxThickness = options.BoundingBoxThickness;
         }
 
-        public Bitmap Compare(Bitmap firstImage, Bitmap secondImage)
+
+
+        public Bitmap Generate(Bitmap firstImage, Bitmap secondImage)
+        {
+            Result result = Compare(firstImage, secondImage);
+            return result.Image;
+        }
+
+        public Result Compare(Bitmap firstImage, Bitmap secondImage)
         {
             if (firstImage == null) throw new ArgumentNullException("firstImage");
             if (secondImage == null) throw new ArgumentNullException("secondImage");
             if (firstImage.Width != secondImage.Width || firstImage.Height != secondImage.Height) throw new ArgumentException("Bitmaps must be the same size.");
-            
+
             var differenceMap = BitmapAnalyzer.Analyze(firstImage, secondImage);
             var differenceLabels = Labeler.Label(differenceMap);
             var boundingBoxes = BoundingBoxIdentifier.CreateBoundingBoxes(differenceLabels);
             var differenceBitmap = CreateImageWithBoundingBoxes(secondImage, boundingBoxes);
-            return differenceBitmap;
+            return Result.Create(differenceBitmap, boundingBoxes);
         }
+
 
         public bool Equals(Bitmap firstImage, Bitmap secondImage)
         {
@@ -95,7 +106,8 @@ namespace ImageDiff
 
             using (var g = Graphics.FromImage(differenceBitmap))
             {
-                var pen = new Pen(BoundingBoxColor);
+                var pen = new Pen(BoundingBoxColor,BoundingBoxThickness) ;
+                
                 foreach (var boundingRectangle in boundingRectangles)
                 {
                     g.DrawRectangle(pen, boundingRectangle);

@@ -4,7 +4,8 @@ namespace ImageDiff
 {
     public interface IImageComparer<T> where T : Image
     {
-        T Compare(T firstImage, T secondImage);
+        T Generate(T firstImage, T secondImage);
+        Result Compare(T firstImage, T secondImage);
         bool Equals(T firstImage, T secondImage);
     }
 }

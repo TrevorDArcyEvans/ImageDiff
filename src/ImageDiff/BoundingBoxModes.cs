@@ -1,8 +1,8 @@
 ﻿namespace ImageDiff
 {
-    public enum BoundingBoxModes
-    {
-        Single = 0,
-        Multiple = 1
-    }
+  public enum BoundingBoxModes
+  {
+    Single = 0,
+    Multiple = 1
+  }
 }

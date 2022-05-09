@@ -3,7 +3,7 @@
     <ProjectGuid>{8C9C4ABC-4D3A-4DCD-AEE1-95E07E4FAE9F}</ProjectGuid>
     <RootNamespace>ImageDiff</RootNamespace>
     <AssemblyName>ImageDiff</AssemblyName>
-    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>ImageDiff-NetStandard</PackageId>
@@ -40,14 +40,15 @@ No other changes at all</PackageReleaseNotes>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Drawing.Common">
-      <Version>4.5.1</Version>
-    </PackageReference>
+
+  <ItemGroup>
+    <PackageReference Include="SixLabors.ImageSharp" Version="2.0.0" />
   </ItemGroup>
+
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
+
   <ItemGroup>
     <None Include="..\..\LICENSE">
       <Pack>True</Pack>

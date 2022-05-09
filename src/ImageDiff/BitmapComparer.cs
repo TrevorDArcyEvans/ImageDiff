@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using ImageDiff.Analyzers;
 using ImageDiff.BoundingBoxes;
 using ImageDiff.Labelers;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
 
 namespace ImageDiff
 {
-  public class BitmapComparer : IImageComparer<Bitmap>
+  public class BitmapComparer : IImageComparer<Image<Rgba32>>
   {
     private LabelerTypes LabelerType { get; set; }
     private double JustNoticeableDifference { get; set; }
     private int DetectionPadding { get; set; }
     private int BoundingBoxPadding { get; set; }
-    private Color BoundingBoxColor { get; set; }
+    private Rgba32 BoundingBoxColor { get; set; }
     private int BoundingBoxThickness { get; set; }
     private BoundingBoxModes BoundingBoxMode { get; set; }
     private AnalyzerTypes AnalyzerType { get; set; }
@@ -57,13 +58,13 @@ namespace ImageDiff
       BoundingBoxThickness = options.BoundingBoxThickness;
     }
 
-    public Bitmap Generate(Bitmap firstImage, Bitmap secondImage)
+    public Image<Rgba32> Generate(Image<Rgba32> firstImage, Image<Rgba32> secondImage)
     {
       Result result = Compare(firstImage, secondImage);
       return result.Image;
     }
 
-    public Result Compare(Bitmap firstImage, Bitmap secondImage)
+    public Result Compare(Image<Rgba32> firstImage, Image<Rgba32> secondImage)
     {
       if (firstImage == null)
       {
@@ -85,9 +86,9 @@ namespace ImageDiff
       return Result.Create(differenceBitmap, boundingBoxes);
     }
 
-    public bool Equals(Bitmap firstImage, Bitmap secondImage)
+    public bool Equals(Image<Rgba32> firstImage, Image<Rgba32> secondImage)
     {
-      if (firstImage == null && secondImage == null) 
+      if (firstImage == null && secondImage == null)
       {
         return true;
       }
@@ -115,15 +116,15 @@ namespace ImageDiff
           if (differenceMap[i, j])
           {
             return false;
-          }            
+          }
         }
       }
       return true;
     }
 
-    private Bitmap CreateImageWithBoundingBoxes(Bitmap secondImage, IEnumerable<Rectangle> boundingBoxes)
+    private Image<Rgba32> CreateImageWithBoundingBoxes(Image<Rgba32> secondImage, IEnumerable<Rectangle> boundingBoxes)
     {
-      var differenceBitmap = secondImage.Clone() as Bitmap;
+      var differenceBitmap = secondImage.Clone() as Image<Rgba32>;
       if (differenceBitmap == null)
       {
         throw new Exception("Could not copy secondImage");

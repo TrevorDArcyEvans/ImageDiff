@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats;
+using SixLabors.ImageSharp.PixelFormats;
 
 namespace ImageDiff
 {
   public class Result
   {
-    public static Result Create(Bitmap image, IEnumerable<Rectangle> boundingBoxes)
+    public static Result Create(Image<Rgba32> image, IEnumerable<Rectangle> boundingBoxes)
     {
       return new Result()
       {
@@ -15,7 +17,7 @@ namespace ImageDiff
       };
     }
 
-    public System.Drawing.Bitmap Image { get; set; }
+    public Image<Rgba32> Image { get; set; }
 
     public IEnumerable<Rectangle> BoundingBoxes { get; set; }
 
@@ -33,13 +35,7 @@ namespace ImageDiff
     /// <param name="filename"></param>
     public void Save(string filename)
     {
-      Image.Save(filename);
-    }
-
-    public void Save(string filename, System.Drawing.Imaging.ImageFormat format)
-    {
-      Image.Save(filename, format);
+      Image.SaveAsPng(filename);
     }
   }
 }
-

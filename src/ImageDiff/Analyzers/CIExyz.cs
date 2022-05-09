@@ -5,7 +5,6 @@ namespace ImageDiff.Analyzers
 {
     internal struct CIExyz
     {
-
         public const double RefX = 95.047;
         public const double RefY = 100.000;
         public const double RefZ = 108.883;

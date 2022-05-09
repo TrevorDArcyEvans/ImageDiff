@@ -1,9 +1,8 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace ImageDiff.Analyzers
 {
-    internal class ExactMatchAnalyzer : IBitmapAnalyzer
+  internal class ExactMatchAnalyzer : IBitmapAnalyzer
     {
         public bool[,] Analyze(Bitmap first, Bitmap second)
         {

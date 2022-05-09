@@ -8,10 +8,10 @@ namespace ImageDiffTests
     [TestFixture]
     public class LabelerFactoryTests
     {
-        [Test, ExpectedException(typeof(ArgumentException))]
+        [Test]
         public void FactoryThrowsWithInvalidType()
         {
-            LabelerFactory.Create((LabelerTypes)100, 0);
+            Assert.Throws<ArgumentException>(() => LabelerFactory.Create((LabelerTypes)100, 0));
         }
 
         [Test]

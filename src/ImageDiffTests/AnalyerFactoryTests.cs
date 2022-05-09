@@ -8,10 +8,10 @@ namespace ImageDiffTests
     [TestFixture]
     public class AnalyerFactoryTests
     {
-        [Test, ExpectedException(typeof(ArgumentException))]
+        [Test]
         public void FactoryThrowsWithInvalidType()
         {
-            BitmapAnalyzerFactory.Create((AnalyzerTypes)100, 2.3);
+            Assert.Throws<ArgumentException>(() => BitmapAnalyzerFactory.Create((AnalyzerTypes)100, 2.3));
         }
 
         [Test]

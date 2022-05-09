@@ -8,10 +8,10 @@ namespace ImageDiffTests
     [TestFixture]
     public class BoundingBoxFactoryTests
     {
-        [Test, ExpectedException(typeof(ArgumentException))]
+        [Test]
         public void FactoryThrowsWithInvalidType()
         {
-            BoundingBoxIdentifierFactory.Create((BoundingBoxModes)100, 0);
+            Assert.Throws<ArgumentException>(() => BoundingBoxIdentifierFactory.Create((BoundingBoxModes)100, 0));
         }
 
         [Test]

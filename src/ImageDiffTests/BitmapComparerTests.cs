@@ -21,44 +21,44 @@ namespace ImageDiffTests
             SecondImage = new Bitmap(TestImage2);
         }
 
-        [Test, ExpectedException(typeof(ArgumentNullException))]
+        [Test]
         public void CompareThrowsWhenFirstImageIsNull()
         {
             var target = new BitmapComparer(null);
-            target.Compare(null, SecondImage);
+            Assert.Throws<ArgumentNullException>(() => target.Compare(null, SecondImage));
         }
 
-        [Test, ExpectedException(typeof(ArgumentNullException))]
+        [Test]
         public void CompareThrowsWhenSecondImageIsNull()
         {
             var target = new BitmapComparer(null);
-            target.Compare(FirstImage, null);
+            Assert.Throws<ArgumentNullException>(() => target.Compare(FirstImage, null));
         }
 
-        [Test, ExpectedException(typeof(ArgumentException))]
+        [Test]
         public void CompareThrowsWhenImagesAreNotSameWidth()
         {
             var firstBitmap = new Bitmap(10, 10);
             var secondBitmap = new Bitmap(20, 10);
 
             var target = new BitmapComparer(null);
-            target.Compare(firstBitmap, secondBitmap);
+            Assert.Throws<ArgumentException>(() => target.Compare(firstBitmap, secondBitmap));
         }
 
-        [Test, ExpectedException(typeof(ArgumentException))]
+        [Test]
         public void CompareThrowsWhenImagesAreNotSameHeight()
         {
             var firstBitmap = new Bitmap(10, 10);
             var secondBitmap = new Bitmap(10, 20);
 
             var target = new BitmapComparer(null);
-            target.Compare(firstBitmap, secondBitmap);
+            Assert.Throws<ArgumentException>(() => target.Compare(firstBitmap, secondBitmap));
         }
 
-        [Test, ExpectedException(typeof(ArgumentException))]
+        [Test]
         public void ImageDiffThrowsWhenBoundingBoxPaddingIsLessThanZero()
         {
-            var target = new BitmapComparer(new CompareOptions
+            Assert.Throws<ArgumentException>(() => new BitmapComparer(new CompareOptions
             {
                 BoundingBoxColor = Color.Red,
                 BoundingBoxMode = BoundingBoxModes.Single,
@@ -66,13 +66,13 @@ namespace ImageDiffTests
                 DetectionPadding = 2,
                 BoundingBoxPadding = -2,
                 Labeler = LabelerTypes.Basic
-            });
+            }));
         }
 
-        [Test, ExpectedException(typeof(ArgumentException))]
+        [Test]
         public void ImageDiffThrowsWhenDetectionPaddingIsLessThanZero()
         {
-            var target = new BitmapComparer(new CompareOptions
+            Assert.Throws<ArgumentException>(() => new BitmapComparer(new CompareOptions
             {
                 BoundingBoxColor = Color.Red,
                 BoundingBoxMode = BoundingBoxModes.Single,
@@ -80,7 +80,7 @@ namespace ImageDiffTests
                 DetectionPadding = -2,
                 BoundingBoxPadding = 2,
                 Labeler = LabelerTypes.Basic
-            });
+            }));
         }
 
         [Test]

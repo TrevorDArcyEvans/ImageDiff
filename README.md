@@ -13,8 +13,8 @@ ImageDiff has three stages to its processing.
 
 After processing is finished, it will generate a new image which is derived from the second image provided to the `Compare` method. This `diff` image will contain highlighted bounding boxes around the differences between the two images.
 
-![first image](/docs/images/firstImage.png) compared to ![second image](/docs/images/secondImage.png) produces 
-![image diff](/docs/images/diffImage.png)
+![first image](docs/images/firstImage.png) compared to ![second image](docs/images/secondImage.png) produces 
+![image diff](docs/images/diffImage.png)
 
 Usage
 -----
@@ -25,8 +25,12 @@ Default usage:
     var secondImage = new Bitmap("path/to/second/image);
 
     var comparer = new BitmapComparer();
-    var diff = comparer.Compare(firstImage, secondImage); //Returns a result with the differences + the Bitmap
-    var generate = comparer.Generate(firstImage, secondImage);// Generates the bitmap image and returns a Bitmap
+	
+	//Returns a result with the differences + the Bitmap
+    var diff = comparer.Compare(firstImage, secondImage);
+	
+	// Generates the bitmap image and returns a Bitmap
+    var generate = comparer.Generate(firstImage, secondImage);
 
 When initialized without options, the following values are used:
 
@@ -44,7 +48,7 @@ The compare object can be configured to use different settings for the different
 
     var options = new CompareOptions 
     {
-	AnalyzerType = AnalyzerTypes.CIE76,
+	    AnalyzerType = AnalyzerTypes.CIE76,
         JustNoticableDifference = 2.3,
         DetectionPadding = 2,
         Labeler = LabelerTypes.ConnectedComponentLabeling,

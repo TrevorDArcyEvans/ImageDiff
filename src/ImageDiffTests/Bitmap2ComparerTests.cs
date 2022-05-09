@@ -117,8 +117,8 @@ namespace ImageDiffTests
                 Labeler = lType
             });
             var result = target.Compare(FirstImage, FirstImage);
-            result.Save(string.Format(OutputFormat, string.Format("CompareWorksWithIdenticalImages_{0}_{1}_{2}_3", aType, bMode, lType,BoundingBoxThickness)),
-                SecondImage.RawFormat); ;
+            result.Save(string.Format(OutputFormat, string.Format("CompareWorksWithIdenticalImages_{0}_{1}_{2}_3", aType, bMode, lType, BoundingBoxThickness)),
+                SecondImage.RawFormat);
         }
 
 

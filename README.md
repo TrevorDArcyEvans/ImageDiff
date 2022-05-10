@@ -2,9 +2,7 @@
 
 A .NET library for comparing images and highlighting the differences.
 
-![first image](docs/images/firstImage.png) **vs**
-![second image](docs/images/secondImage.png) **=**
-![image diff](docs/images/diffImage.png)
+![web ui](docs/images/screenshot-ui-web.png)
 
 ## Background
 * based on [ImageDiff](https://github.com/richclement/ImageDiff)

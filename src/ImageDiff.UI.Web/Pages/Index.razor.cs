@@ -83,7 +83,13 @@ public sealed partial class Index
     StateHasChanged();
     await Task.Run(async () =>
     {
-      var comparer = new BitmapComparer();
+      var options = new CompareOptions
+      {
+        AnalyzerType = AnalyzerTypes.CIE76,
+        BoundingBoxMode = BoundingBoxModes.Multiple,
+        Labeler = LabelerTypes.Basic
+      };
+      var comparer = new BitmapComparer(options);
       var diff = comparer.Compare(_img1, _img2);
       _diffUrl = await GetImageString(diff.Image);
       _text = $"Finished diffing!";

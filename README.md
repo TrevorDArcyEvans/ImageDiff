@@ -67,7 +67,7 @@ Default usage:
 
 ```csharp
     var firstImage = new Bitmap("path/to/first/image");
-    var secondImage = new Bitmap("path/to/second/image);
+    var secondImage = new Bitmap("path/to/second/image");
 
     var comparer = new BitmapComparer();
 

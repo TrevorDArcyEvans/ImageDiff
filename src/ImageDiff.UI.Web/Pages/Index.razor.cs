@@ -87,7 +87,7 @@ public sealed partial class Index
       {
         AnalyzerType = AnalyzerTypes.CIE76,
         BoundingBoxMode = BoundingBoxModes.Multiple,
-        Labeler = LabelerTypes.Basic
+        Labeler = LabelerTypes.ConnectedComponentLabeling
       };
       var comparer = new BitmapComparer(options);
       var diff = comparer.Compare(_img1, _img2);

@@ -95,7 +95,7 @@ different stages of processing.
 ```csharp
     var options = new CompareOptions 
     {
-	    AnalyzerType = AnalyzerTypes.CIE76,
+        AnalyzerType = AnalyzerTypes.CIE76,
         JustNoticableDifference = 2.3,
         DetectionPadding = 2,
         Labeler = LabelerTypes.ConnectedComponentLabeling,

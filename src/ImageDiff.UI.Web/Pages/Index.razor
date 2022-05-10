@@ -71,7 +71,8 @@
   @_img2FileName
   <img src="@_img2Url" class="imagePreview">
 </div>
-<button @onclick="@(async () => await OnDiff())" disabled="@(!_canDiff)">Match</button>
+<button @onclick="@(async () => await OnDiff())" disabled="@(!_canDiff)">Find differences</button>
+<textarea @bind="_text" readonly style="width: 100%;"></textarea>
 <hr/>
 
 <div>

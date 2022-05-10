@@ -43,6 +43,7 @@ No other changes at all</PackageReleaseNotes>
 
   <ItemGroup>
     <PackageReference Include="SixLabors.ImageSharp" Version="2.0.0" />
+    <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="1.0.0-beta14" />
   </ItemGroup>
 
   <ItemGroup>

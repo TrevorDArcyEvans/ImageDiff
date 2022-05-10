@@ -5,6 +5,8 @@ using ImageDiff.Analyzers;
 using ImageDiff.BoundingBoxes;
 using ImageDiff.Labelers;
 using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
+using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.PixelFormats;
 
 namespace ImageDiff
@@ -136,14 +138,11 @@ namespace ImageDiff
         return differenceBitmap;
       }
 
-      using (var g = Graphics.FromImage(differenceBitmap))
-      {
-        var pen = new Pen(BoundingBoxColor, BoundingBoxThickness);
+      var pen = Pens.Solid(BoundingBoxColor, BoundingBoxThickness);
 
-        foreach (var boundingRectangle in boundingRectangles)
-        {
-          g.DrawRectangle(pen, boundingRectangle);
-        }
+      foreach (var boundingRectangle in boundingRectangles)
+      {
+        differenceBitmap.Mutate(x => x.Draw(pen , boundingRectangle));
       }
       return differenceBitmap;
     }
